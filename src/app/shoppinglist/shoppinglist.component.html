@@ -1,0 +1,35 @@
+
+  <form #frm="ngForm" (ngSubmit)="additem(frm)" *ngIf="toggleflag">
+    <h2>Additem</h2>
+    <div class="form-group">
+      <input type="text" class="form-control" name="itemname" value="" ngModel>
+    </div>
+    <button type="submit" name="button" class="btn btn-primary" style="margin-bottom:5%">add item</button>
+  </form>
+
+  <form #editfrom="ngForm" (ngSubmit)="edititem(editfrom)" *ngIf="!toggleflag" >
+    <h2>Edititem</h2>
+    <div class="form-group">
+      <input type="text" class="form-control" name="itemname" value="" [ngModel]="selecteditem.itemname">
+    </div>
+    <button type="submit" name="button" class="btn btn-primary" style="margin-bottom:5%">save</button>
+  </form>
+
+
+
+<h2>shopping list</h2>
+<!-- <div class="col-md-12"> -->
+<div class="">
+<div *ngFor="let item of shoppingitemlist" class="row" style="margin-top:5px">
+  <div class="col-md-4">
+    {{item.itemname}}
+    </div>
+<div class="col-md-4">
+  <button type="button" name="button" class="btn btn-primary" (click)="showitem(item)" [disabled]="!toggleflag">edit</button>
+</div>
+<div class="col-md-4">
+  <button type="button" name="button" class="btn btn-danger" (click)="deleteitem(item._id)">delete</button>
+</div>
+</div>
+</div>
+<!-- </div> -->
